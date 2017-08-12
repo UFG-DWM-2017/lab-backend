@@ -1,3 +1,6 @@
-/target/
 /.idea/
+/.settings/
+/target/
+/.classpath
+/.project
 /lab-backend.iml
