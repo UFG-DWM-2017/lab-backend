@@ -1,6 +1,5 @@
 package lab.venda;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,19 +15,18 @@ public class VendaController {
   @PostMapping
   public Venda salvarVenda(Venda venda) {
     //TODO Salvar a venda.
-    return new Venda("Coca cola", "3");
+    return null;
   }
 
   @GetMapping
   public List<Venda> listarVendas() {
     //TODO Retornar as vendas.
-    Venda venda = new Venda("Coca cola", "3");
-    return Arrays.asList(venda);
+    return null;
   }
 
   @DeleteMapping
   public Venda apagarVenda(Venda venda) {
-    //TODO Apagar a venda..
-    return new Venda("Coca cola", "3");
+    //TODO Apagar a venda.
+    return null;
   }
 }

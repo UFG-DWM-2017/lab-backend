@@ -1,10 +1,25 @@
 package lab.venda;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Venda {
+
+  @Id
+  private Integer codigo;
 
   private String produto;
 
-  private String quantidade;
+  private Integer quantidade;
+
+  public Integer getCodigo() {
+    return codigo;
+  }
+
+  public void setCodigo(Integer codigo) {
+    this.codigo = codigo;
+  }
 
   public String getProduto() {
     return produto;
@@ -14,21 +29,11 @@ public class Venda {
     this.produto = produto;
   }
 
-  public String getQuantidade() {
+  public Integer getQuantidade() {
     return quantidade;
   }
 
-  public void setQuantidade(String quantidade) {
-    this.quantidade = quantidade;
-  }
-
-  public Venda() {
-    super();
-  }
-
-  public Venda(String produto, String quantidade) {
-    super();
-    this.produto = produto;
+  public void setQuantidade(Integer quantidade) {
     this.quantidade = quantidade;
   }
 
