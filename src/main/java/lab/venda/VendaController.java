@@ -26,6 +26,11 @@ public class VendaController {
     return vendaService.listar();
   }
 
+  @GetMapping("/grande")
+  public Iterable<Venda> listarGrandesVendas() {
+    return vendaService.listarGrandesVendas();
+  }
+
   @DeleteMapping("/{codigo}")
   public void remover(@PathVariable("codigo") Integer codigo) {
     vendaService.remover(codigo);

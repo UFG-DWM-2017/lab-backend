@@ -5,17 +5,26 @@
 <title>Venda</title>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script>
-  function salvar() {
-    var codigo = $("input[name=codigo]").val();
-    var produto = $("input[name=produto]").val();
-    var quantidade = $("input[name=quantidade]").val();
-    $.ajax({
-      dataType : "json",
-      url : "http://localhost:9090//venda?codigo=" + codigo + 
-    }).then(function(data) {
-      alert(data);
-    });
-  }
+function listar() {
+  $.ajax({
+    url : "http://localhost:9090/api/venda" 
+  }).then(function(data) {
+    alert(data);
+  });
+}
+function salvar() {
+  var codigo = $("input[name='codigo']").val();
+  var produto = $("input[name='produto']").val();
+  var quantidade = $("input[name='quantidade']").val();
+  $.ajax({
+    type: 'POST',
+    url: 'http://localhost:9090/api/venda',
+    data: '{"codigo":22}',
+    success: function(data) { alert('data: ' + data); },
+    contentType: "application/json",
+    dataType: 'json'
+  });
+}
 </script>
 </head>
 <body>
@@ -29,6 +38,8 @@
   <input name="quantidade" type="text">
   <br>
   <input type="button" value="Salvar" onclick="salvar()">
+  <br>
+  <input type="button" value="Listar" onclick="listar()">
   </button>
 </body>
 </html>

@@ -1,7 +1,5 @@
 package lab.venda;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +15,10 @@ public class VendaService {
 
   public Iterable<Venda> listar() {
     return vendaRepository.findAll();
+  }
+
+  public Iterable<Venda> listarGrandesVendas() {
+    return vendaRepository.findByQuantidadeGreaterThan(20);
   }
 
   public void remover(Integer codigo) {
