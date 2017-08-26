@@ -17,7 +17,10 @@ import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TES
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import lab.venda.Venda;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -41,4 +44,27 @@ public class LabBackendApplicationTest {
       body("quantidade", equalTo(4));
   }
 
+  @Test
+  public void novaVendaTest() {
+    Venda venda = new Venda();
+    venda.setCodigo(-100);
+    venda.setProduto("Arroz");
+    venda.setQuantidade(30);
+    
+    given().
+      contentType(ContentType.JSON).
+      body(venda).
+    when().
+      post("/api/vendas").
+    then().
+      statusCode(200).
+      body("codigo", equalTo(-100));
+  }
+
+  @Test
+  public void quantidadeVendaTest() {
+    get("/api/vendas").
+    then().
+      body("size()", greaterThan(1));
+  }
 }
