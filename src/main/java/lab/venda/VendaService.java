@@ -13,6 +13,10 @@ public class VendaService {
     return vendaRepository.save(venda);
   }
 
+  public Venda obter(Integer codigo) {
+    return vendaRepository.findOne(codigo);
+  }
+
   public Iterable<Venda> listar() {
     return vendaRepository.findAll();
   }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/venda")
+@RequestMapping("/api/vendas")
 public class VendaController {
   
   @Autowired
@@ -29,6 +29,11 @@ public class VendaController {
   @GetMapping("/grande")
   public Iterable<Venda> listarGrandesVendas() {
     return vendaService.listarGrandesVendas();
+  }
+
+  @GetMapping("/{codigo}")
+  public Venda obter(@PathVariable("codigo") Integer codigo) {
+    return vendaService.obter(codigo);
   }
 
   @DeleteMapping("/{codigo}")

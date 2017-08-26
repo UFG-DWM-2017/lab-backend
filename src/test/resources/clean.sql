@@ -1,0 +1,1 @@
+delete from venda where codigo < 0
