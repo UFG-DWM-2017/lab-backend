@@ -38,7 +38,10 @@ public class LabBackendApplicationTest {
 
   @Test
   public void vendaTest() {
-    get("/api/vendas/-1").
+    given().
+      auth().basic("user1", "secret1").
+    when().
+      get("/api/vendas/-1").
     then().
       body("produto", equalTo("Pastel de Carne")).
       body("quantidade", equalTo(4));
@@ -53,6 +56,7 @@ public class LabBackendApplicationTest {
     
     given().
       contentType(ContentType.JSON).
+      auth().basic("user1", "secret1").
       body(venda).
     when().
       post("/api/vendas").
@@ -63,7 +67,10 @@ public class LabBackendApplicationTest {
 
   @Test
   public void quantidadeVendaTest() {
-    get("/api/vendas").
+    given().
+      auth().basic("user1", "secret1").
+    when().
+      get("/api/vendas").
     then().
       body("size()", greaterThan(1));
   }
